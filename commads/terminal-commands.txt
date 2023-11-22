@@ -1,0 +1,32 @@
+ls
+cd 
+pwd 
+
+- clear the terminal
+clear
+
+- open the current folder
+open .
+
+- create folder
+mkdir folder-name
+
+- create file 
+touch index.html
+
+- open file 
+open index.html 
+
+- open file by editor application
+open -a "Sublime Text" index.html 
+
+- change name 
+mv oldfile newfile
+
+- delete file 
+rm xxx 
+
+- delete folder 
+rm -r foldername 
+
+- mac can say out what you typed. 

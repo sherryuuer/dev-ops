@@ -1,4 +1,4 @@
-miniconda
+- miniconda
 
 mkdir mlztm
 cd mlztm
@@ -11,17 +11,17 @@ jupyter notebook
 conda deactivate
 conda env export > environment.yml
 
-how to share env:
-share the whole folder
+- how to share env:
+- share the whole folder
 
-share the env yml file
+- share the env yml file
 conda env export --prefix /Users/daniel/Desktop/project_1/env > environment.yml
 conda env create --file environment.yml --name env_from_file
-eg.
+- eg.
 conda env create --file environment.yml -p C:\Users\sherr\Desktop\machine-learning-lab\mlztm\env
 to create an environment called env_from_file from a .yml file called environment.yml
 
 
-remove env:
+- remove env:
 conda remove --name ENV_NAME --all
 conda remove -p ENV_PATH --all

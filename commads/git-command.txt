@@ -1,0 +1,199 @@
+---------------Need to do task-----------------
+Exponential Backoff retry --API how to make it
+
+
+github command:
+
+C:\Users\sherr\Desktop>ssh-keygen -t rsa -C "sherryuuer@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\sherr/.ssh/id_rsa):
+Created directory 'C:\\Users\\sherr/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\sherr/.ssh/id_rsa
+Your public key has been saved in C:\Users\sherr/.ssh/id_rsa.pub
+
+
+key登録
+vscode:
+ssh -T git@github.com
+git config --global user.name "name"
+git config --global user.email "email"
+git init
+git remote add origin git@github.com:sherryuuer/SallyFolder.git
+git clone git@github.com:sherryuuer/MLANN
+git clone git@github.com:sherryuuer/SallyFolder
+
+git checkout main (go to the master branch)
+git checkout -b localwork
+(switch to a new branch "localwork")
+(modify some file)
+
+(loop everyday)
+git add * 
+git mv filename1 filename2
+(manage the file change by git command.if you do it by your mouse, git can not track it.)
+(and if it happend again use the line blow)
+git add -A
+git commit -m "date"
+git checkout main
+git merge localwork
+git push
+git branch -D localwork
+
+
+git pull
+git checkout -b localwork
+
+some debug:
+here is where I learned this.
+ https://zenn.dev/kyami/articles/f5ded861b6f56a#6.8-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%81%AE%E5%A4%89%E6%9B%B4%E3%82%92git%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B
+here it the log of my merge problem log:
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (main)
+$ git diff main localwork
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (main)
+$ git checkout localwork
+Switched to branch 'localwork'
+D       Nato_alphabet_day26/main.py
+D       Nato_alphabet_day26/nato_phonetic_alphabet.csv
+D       TKinter_GUI_day27/Mile_to_Km_Converter.py
+D       TKinter_GUI_day27/main.py
+D       TKinter_GUI_day27/playground_args.py
+D       TKinter_GUI_day27/tkinter_widget_demo.py
+D       TurtleGame_HigherOrderFunction_day19/main.py
+D       TurtlePJ_day18/main.py
+D       TurtleRace/main.py
+D       UsStatesGame_day25/50_states.csv
+D       UsStatesGame_day25/blank_states_img.gif
+D       UsStatesGame_day25/main.py
+D       UsStatesGame_day25/main_ans.py
+D       UsStatesGame_day25/missing_states.csv
+D       UsStatesGame_day25/missing_states_list.csv
+D       do_file_day24/main.py
+D       do_file_day24/my_file.txt
+D       do_file_day24/new_file.txt
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (localwork)
+$ git commit -m "20230908"
+On branch localwork
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Nato_alphabet_day26/main.py
+        deleted:    Nato_alphabet_day26/nato_phonetic_alphabet.csv
+        deleted:    TKinter_GUI_day27/Mile_to_Km_Converter.py
+        deleted:    TKinter_GUI_day27/main.py
+        deleted:    TKinter_GUI_day27/playground_args.py
+        deleted:    TKinter_GUI_day27/tkinter_widget_demo.py
+        deleted:    TurtleGame_HigherOrderFunction_day19/main.py
+        deleted:    TurtlePJ_day18/main.py
+        deleted:    TurtleRace/main.py
+        deleted:    UsStatesGame_day25/50_states.csv
+        deleted:    UsStatesGame_day25/blank_states_img.gif
+        deleted:    UsStatesGame_day25/main.py
+        deleted:    UsStatesGame_day25/main_ans.py
+        deleted:    UsStatesGame_day25/missing_states.csv
+        deleted:    UsStatesGame_day25/missing_states_list.csv
+        deleted:    do_file_day24/main.py
+        deleted:    do_file_day24/my_file.txt
+        deleted:    do_file_day24/new_file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (localwork)
+$ git commit -a
+Aborting commit due to empty commit message.
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (localwork)
+$ git add -A
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (localwork)
+$ git commit -m "20230908"
+[localwork 61560d3] 20230908
+ 18 files changed, 709 deletions(-)
+ delete mode 100644 Nato_alphabet_day26/main.py
+ delete mode 100644 Nato_alphabet_day26/nato_phonetic_alphabet.csv
+ delete mode 100644 TKinter_GUI_day27/Mile_to_Km_Converter.py
+ delete mode 100644 TKinter_GUI_day27/main.py
+ delete mode 100644 TKinter_GUI_day27/playground_args.py
+ delete mode 100644 TKinter_GUI_day27/tkinter_widget_demo.py
+ delete mode 100644 TurtleGame_HigherOrderFunction_day19/main.py
+ delete mode 100644 TurtlePJ_day18/main.py
+ delete mode 100644 TurtleRace/main.py
+ delete mode 100644 UsStatesGame_day25/50_states.csv
+ delete mode 100644 UsStatesGame_day25/blank_states_img.gif
+ delete mode 100644 UsStatesGame_day25/main.py
+ delete mode 100644 UsStatesGame_day25/main_ans.py
+ delete mode 100644 UsStatesGame_day25/missing_states.csv
+ delete mode 100644 UsStatesGame_day25/missing_states_list.csv
+ delete mode 100644 do_file_day24/main.py
+ delete mode 100644 do_file_day24/my_file.txt
+ delete mode 100644 do_file_day24/new_file.txt
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (localwork)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (main)
+$ git merge localwork
+Updating 88918d8..61560d3
+Fast-forward
+ Nato_alphabet_day26/main.py                    |  41 ------------
+ Nato_alphabet_day26/nato_phonetic_alphabet.csv |  27 --------
+ TKinter_GUI_day27/Mile_to_Km_Converter.py      |  33 ----------
+ TKinter_GUI_day27/main.py                      |  46 -------------
+ TKinter_GUI_day27/playground_args.py           |  33 ----------
+ TKinter_GUI_day27/tkinter_widget_demo.py       |  86 -------------------------
+ TurtleGame_HigherOrderFunction_day19/main.py   |  42 ------------
+ TurtlePJ_day18/main.py                         |  75 ---------------------
+ TurtleRace/main.py                             |  41 ------------
+ UsStatesGame_day25/50_states.csv               |  51 ---------------
+ UsStatesGame_day25/blank_states_img.gif        | Bin 41181 -> 0 bytes
+ UsStatesGame_day25/main.py                     |  50 --------------
+ UsStatesGame_day25/main_ans.py                 |  64 ------------------
+ UsStatesGame_day25/missing_states.csv          |  50 --------------
+ UsStatesGame_day25/missing_states_list.csv     |  50 --------------
+ do_file_day24/main.py                          |  17 -----
+ do_file_day24/my_file.txt                      |   2 -
+ do_file_day24/new_file.txt                     |   1 -
+ 18 files changed, 709 deletions(-)
+ delete mode 100644 Nato_alphabet_day26/main.py
+ delete mode 100644 Nato_alphabet_day26/nato_phonetic_alphabet.csv
+ delete mode 100644 TKinter_GUI_day27/Mile_to_Km_Converter.py
+ delete mode 100644 TKinter_GUI_day27/main.py
+ delete mode 100644 TKinter_GUI_day27/playground_args.py
+ delete mode 100644 TKinter_GUI_day27/tkinter_widget_demo.py
+ delete mode 100644 TurtleGame_HigherOrderFunction_day19/main.py
+ delete mode 100644 TurtlePJ_day18/main.py
+ delete mode 100644 TurtleRace/main.py
+ delete mode 100644 UsStatesGame_day25/50_states.csv
+ delete mode 100644 UsStatesGame_day25/blank_states_img.gif
+ delete mode 100644 UsStatesGame_day25/main.py
+ delete mode 100644 UsStatesGame_day25/main_ans.py
+ delete mode 100644 UsStatesGame_day25/missing_states.csv
+ delete mode 100644 UsStatesGame_day25/missing_states_list.csv
+ delete mode 100644 do_file_day24/main.py
+ delete mode 100644 do_file_day24/my_file.txt
+ delete mode 100644 do_file_day24/new_file.txt
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (main)
+$ git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 239 bytes | 119.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:sherryuuer/SallyFolder.git
+   88918d8..61560d3  main -> main
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (main)
+$ git checkout localwork
+Switched to branch 'localwork'
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/MyProject (localwork)
+$
