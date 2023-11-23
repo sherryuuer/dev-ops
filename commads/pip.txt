@@ -1,0 +1,10 @@
+- check version
+pip3 -V 
+
+- upgrade
+pip install --upgrade pip
+
+- list pakeages 
+pip list 
+
+- pip let me use your packages across the universe!
