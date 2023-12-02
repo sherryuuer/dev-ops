@@ -1,0 +1,24 @@
+//https://nodejs.org/en/
+// To check if you have Node.js installed, run this command in your terminal:
+node -v
+// To confirm that you have npm installed you can run this command in your terminal:
+npm -v
+
+
+
+
+// in command prompt 
+// install live-server globally 
+// https://www.npmjs.com/package/live-server
+// this will create a local host for test.
+npm install -g live-server
+// how to use: go to workfolder and run 
+live-server
+// install locally: go to workfolder and run 
+npm install lodash
+// then in the folder will show the module folder
+// https://lodash.com/
+// lodash is a dependencies,so lodash + script.js = bundle.js 
+// 只要有package.json，新载入的环境只需要运行npm install就可以重新载入module文件夹，所以无需push自己的本地module文件夹。
+// 而且npm install还会自动帮你安装最新的包
+// 定义package.json中的script命令就可以自定义命令比如xxx就可以用npm run xxx来运行。

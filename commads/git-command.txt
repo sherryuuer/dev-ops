@@ -1,3 +1,36 @@
+---------------Keeping Your Fork Up To Date---
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/start-here-guidelines (ztmjoin)
+$ git remote -v
+origin  https://github.com/sherryuuer/start-here-guidelines.git (fetch)
+origin  https://github.com/sherryuuer/start-here-guidelines.git (push)
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/start-here-guidelines (ztmjoin)
+$ git remote add upstream https://github.com/zero-to-mastery/start-here-guidelines.git
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/start-here-guidelines (ztmjoin)
+$ git remote -v
+origin  https://github.com/sherryuuer/start-here-guidelines.git (fetch)
+origin  https://github.com/sherryuuer/start-here-guidelines.git (push)
+upstream        https://github.com/zero-to-mastery/start-here-guidelines.git (fetch)
+upstream        https://github.com/zero-to-mastery/start-here-guidelines.git (push)
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/start-here-guidelines (ztmjoin)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/start-here-guidelines (master)
+$ git pull upstream master
+From https://github.com/zero-to-mastery/start-here-guidelines
+ * branch                master     -> FETCH_HEAD
+ * [new branch]          master     -> upstream/master
+Already up to date.
+
+sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/start-here-guidelines (master)
+$
+
+
+
 ---------------Need to do task-----------------
 Exponential Backoff retry --API how to make it
 
@@ -44,6 +77,10 @@ git branch -D localwork
 
 git pull
 git checkout -b localwork
+
+单人作业本地main merge然后push
+多人作业本地branch merge main（pull）然后push到remote进行pr
+
 
 some debug:
 here is where I learned this.

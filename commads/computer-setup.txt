@@ -1,0 +1,15 @@
+
+setup terminal by fish
+
+install vscode
+
+install git
+
+install anaconda
+
+install python
+
+install npm&nodejs
+
+install react
+npm install react
