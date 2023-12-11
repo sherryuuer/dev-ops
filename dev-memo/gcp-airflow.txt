@@ -1,0 +1,8 @@
+2023-12
+
+随着环境的扩大，tables不断追加，batch处理的内容越来越多，
+airflow的scheduler server需要处理的内容也越来越多，
+cpu使用率不断提高，出现了task无法被入queue的情况，早上出现了问题。
+感想：
+需要设置一个alarm，以及定期调整resource数值，适应环境的变化。
+同时经常进行monitor观测环境情况。
