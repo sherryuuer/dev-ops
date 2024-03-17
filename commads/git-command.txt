@@ -1,3 +1,22 @@
+ローカルのgit管理されているフォルダに入って下記コマンドを実行すればcommit番号を取得できます。
+git log --oneline --graph --decorate
+
+マージコミットのcommitをrevertすればOK。
+ローカルからやるには
+①リバート用のブランチ作成→ブランチにチェックアウト
+②revert -m 1 xxxxxx
+でリモートでマージされたコミットをリバート
+③リバートしたコミットをpush
+→ここは普通のpushと変わらず
+
+上記の処理とかをローカルでやっていて間違ったりして、最初に戻したいときは下記をやれば物理的に最初の状態(pullした最新の状態)に戻せます。
+git logでリモートの最新のcommitを確認（最新のmergeのcommit）
+git reset --hard xxxxxx→上記のcommitを指定
+ローカルにもversionあるので、それを物理的に戻ることです！
+
+
+
+
 ---------------Keeping Your Fork Up To Date---
 sherr@DESKTOP-OS8F6G2 MINGW64 ~/Desktop/start-here-guidelines (ztmjoin)
 $ git remote -v
