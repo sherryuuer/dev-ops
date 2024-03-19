@@ -1,0 +1,3 @@
+gcf_project_progress_mail_members	id	int(10)
+gcf_project_progress_mail_members	gcf_project_id	int(10)
+

@@ -1,0 +1,11 @@
+apache-airflow-providers-ssh==2.4.4
+annoy==1.17.0
+slackweb==1.0.5
+pikepdf==5.4.2
+apache-airflow-providers-sftp==4.0.0
+tableauserverclient==0.19.0
+pypdf==3.17.0
+reportlab==4.0.4
+gensim==4.2.0
+pdfrw==0.4
+openpyxl==3.0.10

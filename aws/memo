@@ -1,0 +1,10 @@
+cloud-formation-template-vpc-alb-app-db.yml
+来自于workshop构架图如下
+https://catalog.workshops.aws/well-architected-security/en-US/4-infrastructure-protection/automated-deployment-of-vpc/1-create-vpc-stack
+用来使用cloud formation自动构架vpc体系。是一个横跨三个AZ的应用网络框架。
+
+⬇️
+cloud-formation-wordpress-template.yml
+来自于workshop构架图如下
+https://catalog.workshops.aws/well-architected-security/en-US/4-infrastructure-protection/automated-deployment-of-ec2-web-application/#introduction
+用来使用cloud formation自动构架一个网络app应用系统。
