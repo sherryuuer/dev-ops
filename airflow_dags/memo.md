@@ -22,7 +22,8 @@ default_timezone
 Asia/Tokyo
 max_active_runs_per_dag
 100
-webserverdefault_ui_timezone
+webserver
+default_ui_timezone
 Asia/Tokyo
 这些参数是 Airflow 的配置参数，用于配置 Airflow 的各种行为和性能。下面是对每个参数的解释：
 1. **scheduler**：指定要使用的调度器，用于安排任务的执行。例如，可以选择使用 `CeleryScheduler` 或 `SequentialScheduler`。
