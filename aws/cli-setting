@@ -12,3 +12,7 @@ set AWS_PROFILE = profile_name
 
 check profile by
 aws configure list
+
+AWS中的codecommit也是一个git管理系统，和github一样，但是要clone需要在IAM中的user权限管理中，在session管理中的codecommit中生成自己的认证ID和密码。
+
+首次登陆自己的root云账户的最佳实践是生成自己的IAM账户。
