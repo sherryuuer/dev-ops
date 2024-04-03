@@ -1,0 +1,14 @@
+windows
+
+setup by command:
+aws configure
+
+or add to files:
+user -> sally -> .aws -> config / credentials
+
+change profile
+
+set AWS_PROFILE = profile_name
+
+check profile by
+aws configure list

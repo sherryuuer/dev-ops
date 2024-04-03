@@ -68,6 +68,7 @@ Your public key has been saved in C:\Users\sherr/.ssh/id_rsa.pub
 
 key登録
 vscode:
+git config --global --list
 ssh -T git@github.com
 git config --global user.name "name"
 git config --global user.email "email"
