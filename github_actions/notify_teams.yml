@@ -1,0 +1,41 @@
+name: Python Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  
+
+    #-- Teams通知 --#
+    # way 1
+    - name: 'Teams Notification on Success'
+      if: ${{ success() }}  # ${{ failure() }} change the message in MESSAGE too
+      run: |
+        MESSAGE="ジョブ詳細:  ${{ github.repository }} ComposerのGCSへのデプロイは成功しました。(コミットメッセージ: ${{ github.event.head_commit.message }} | 作成者: ${{ github.event.head_commit.author.name }} | タイムスタンプ: ${{ github.event.head_commit.timestamp }})"
+        curl -X POST -H "Content-Type: application/json" -d "{\"@type\": \"MessageCard\",\"title\": \"デプロイ成功\",\"text\": \"$MESSAGE\"}" ${{ secrets.TEAMS_WEBHOOK_URL }}
+      env:
+        WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+
+    # way 2
+    - name: 'Teams Notification on Success'
+      if: ${{ success() }}  # ${{ failure() }} change the parameter in run code too
+      run: |
+        pip install -r utils/notify_teams/requirements.txt
+        python utils/notify_teams/notify_teams.py ${{ secrets.TEAMS_WEBHOOK_URL }} 'success' ${{ github.event.repository.url }} ${{ github.event.head_commit.message }} ${{ github.event.head_commit.author.name }} ${{ github.event.head_commit.timestamp }}
+      env:
+        WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+
+
+
+        
+
+
+
+

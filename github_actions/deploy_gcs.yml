@@ -1,0 +1,35 @@
+name: deploy_to_gcs
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - the_trigger_path_in_your_repo/**  # src/composer/**
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'  # will not delete file in gcs
+
+    steps:
+      - id: 'checkout'
+        uses: 'actions/checkout@v3'
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          # set up by workload identity in gcp
+          workload_identity_provider: 'projects/${{ vars.PROJECT_ID }}/locations/global/workloadIdentityPools/${{ vars.WORKLOAD_IDENTITY_POOL }}/providers/github'
+          # grant policy to SA to access gcs
+          service_account: ${{ vars.SERVICE_ACCOUNT }}
+
+      - id: 'upload-folder'
+        uses: 'google-github-actions/upload-cloud-storage@v2'
+        with:
+          path: 'path_in_your_repo/the_same_folder_name_in_bucket'
+          destination: 'bucket_name'
