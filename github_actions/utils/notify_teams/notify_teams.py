@@ -16,25 +16,27 @@ def _prep_job_message(info, repository, commit_message, author, timestamp):
     """
 
     entries = []
-    for m in MENTION_MEMBERS:
-        entries.append(
-            {
-                'type': 'mention',
-                'text': f'<at>{m}</at>',
-                'mentioned': {
-                    'id': m,
-                    'name': m.split('@')[0]
-                },
-            }
-        )
-    mentions = ''.join([f'<at>{m}</at> ' for m in MENTION_MEMBERS])
+    mentions_text = f'デプロイ成功しました！\n\n'
     if info == 'failure':
-        mentions_text = f'{mentions}\n\nデプロイ失敗しました！\n\n'
-    else:
-        mentions_text = f'{mentions}\n\nデプロイ成功しました！\n\n'
-        # mentions_text = f'デプロイ成功しました！\n\n'
 
-    text = f'{mentions_text}リポジトリ：{repository}\n\nコミットメッセージ：{commit_message}\n\n作成者：{author}\n\nタイムスタンプ：{timestamp}'
+        for m in MENTION_MEMBERS:
+            entries.append(
+                {
+                    'type': 'mention',
+                    'text': f'<at>{m}</at>',
+                    'mentioned': {
+                        'id': m,
+                        'name': m.split('@')[0]
+                    },
+                }
+            )
+        mentions = ''.join([f'<at>{m}</at> ' for m in MENTION_MEMBERS])
+        mentions_text = f'{mentions}\n\nデプロイ失敗しました！\n\n'
+
+    text = (f'{mentions_text}リポジトリ：{repository}\n\n'
+            f'コミットメッセージ：{commit_message}\n\n'
+            f'作成者：{author}\n\n'
+            f'タイムスタンプ：{timestamp}')
 
     message = {
         'type': 'message',
@@ -70,7 +72,8 @@ def notify_message(webhook_url, info, repository, commit_message, author, timest
     """
     response = requests.post(
         webhook_url,
-        json=_prep_job_message(info, repository, commit_message, author, timestamp),
+        json=_prep_job_message(
+            info, repository, commit_message, author, timestamp),
     )
     print(f'response: {response}')
 
@@ -86,6 +89,5 @@ if __name__ == "__main__":
     timestamp = sys.argv[6]
 
     # 関数実行
-    notify_message(webhook_url, info, repository, commit_message, author, timestamp)
-
-
+    notify_message(webhook_url, info, repository,
+                   commit_message, author, timestamp)
