@@ -1,3 +1,27 @@
+## Defer method (asyncio) and Reschedule option
+
+Deferral Logic
+- Custom Python code within task callable	
+- Predefined by sensor type
+
+Trigger for Resumption
+- Any event/condition defined in code
+- Limited to sensor's logic (time, API response, etc.)
+
+Purpose	
+- Defer based on dynamic conditions	
+- Defer based on predictable events
+
+Impact on Downstream Tasks
+- Not affected until explicitly resumed	
+- Automatically rescheduled with sensor
+
+Use Case Examples
+- Waiting for data, external signals, custom logic checks
+- Waiting for specific time, successful API call
+
+
+
 ## memo sheet
 
 - .airflowignore can be set to ignore file in /dags to stop the dag
