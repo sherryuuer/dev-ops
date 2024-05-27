@@ -1,22 +1,61 @@
 from google.cloud import secretmanager
+import ftplib
+import json
 
-PROJECT_ID = "bandainamco-lake-bsp-dev"
-SECRET_ID = "gbase-access-key"
+PROJECT_ID = 'bandainamco-lake-bsp-dev'
+SECRET_ID = 'gbase-access-key'
+VERSION = '1'
 
-def _get_connection_info(project_id=PROJECT_ID, secret_id=SECRET_ID):
-    """
-    Secret ManagerからFTP接続情報を取得する
+def _get_connection_info():
 
-    Args:
-        project_id (str): 処理を実行するGCPプロジェクトID
-        secret_id (str): Secret managerのSecret ID
+    # client = secretmanager.SecretManagerServiceClient()
+    # name = f"projects/{project_id}/secrets/gbase-access-key/versions/1"
 
-    Returns:
-        object: シークレット情報
-    """
+    # # Get the secret version.
+    # response = client.get_secret_version(request={"name": name})
+
+    # # Print information about the secret version.
+    # state = response.state.name
+    # print(f"Got secret version {response.name} with state {state}")
 
     client = secretmanager.SecretManagerServiceClient()
-    name = client.secret_path(project_id, secret_id)
+    path = client.secret_version_path(PROJECT_ID, SECRET_ID, VERSION)
 
-    res = client.get_secret(request={"name": name})
-    print(res.keys())
+    response = client.access_secret_version(name=path)
+    secret_value = response.payload.data.decode('UTF-8')
+    
+    # try to get key
+    secret_dict = json.loads(secret_value)
+    # return list(secret_dict.keys())
+    return secret_dict
+
+
+def _connect_ftp_server():
+    """
+    FTPサーバーへFTPSプロトコルで接続する
+
+    Args:
+        connection_info (object): Secret Managerから取得した接続情報
+
+    Returns:
+        FTP_TLS: FTPサーバーへの接続
+    """
+    connection_info = _get_connection_info()
+    print(connection_info["host"])
+    # ftps = ftplib.FTP_TLS(
+    #     host=connection_info["host"],
+    #     user=connection_info["user"],
+    #     passwd=connection_info["password"],
+    #     timeout=60,
+    # )
+    # ftps.prot_p()
+    
+    # return ftps
+    ftp = ftplib.FTP(
+        host=connection_info["host"],
+        user=connection_info["user"],
+        passwd=connection_info["password"]
+    )
+    ftp.login()
+    ftp.retrlines('LIST')
+    ftp.quit()
