@@ -2,8 +2,8 @@ from google.cloud import secretmanager
 import ftplib
 import json
 
-PROJECT_ID = ''
-SECRET_ID = ''
+PROJECT_ID = 'bandainamco-lake-bsp-dev'
+SECRET_ID = 'gbase-access-key'
 VERSION = '1'
 
 def _get_connection_info():
