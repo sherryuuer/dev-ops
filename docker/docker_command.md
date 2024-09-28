@@ -1,5 +1,3 @@
-当然，以下是一些常用的 Docker 命令及其解释：
-
 ### 基本命令
 1. **`docker --version`**
    - 显示 Docker 的版本信息。
@@ -95,4 +93,3 @@
 
 5. **`docker-compose logs`**
    - 查看 Docker Compose 配置的所有服务的日志。
-
