@@ -101,8 +101,6 @@ minikube service mywebapp
 kubectl apply -f solution/v4.yaml
 ```
 
-
-
 # Troubleshooting, Logs, Rollouts, Draining Nodes
 k describe deployment mydeployment
 ### Logs
